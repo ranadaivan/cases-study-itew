@@ -54,7 +54,7 @@ export default {
     },
     markAsDone(task) {
       console.log('Mark as done:', task);
-      this.$emit('mark-done', task);
+      this.$emit('mark-as-done', task); // Emitting 'mark-as-done' event with the task
     },
     deleteTask(task) {
       Swal.fire({

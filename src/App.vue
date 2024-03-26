@@ -80,6 +80,16 @@ export default {
     },
     closeTaskForm() {
       this.showTaskForm = false;
+    },
+    moveTask(task) {
+      // Remove task from pendingTasks
+      const pendingIndex = this.pendingTasks.findIndex(t => t === task);
+      if (pendingIndex !== -1) {
+        this.pendingTasks.splice(pendingIndex, 1);
+      }
+
+      // Add task to completedTasks
+      this.completedTasks.push(task);
     }
   }
 };
