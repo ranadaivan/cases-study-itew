@@ -25,10 +25,10 @@ export default {
   data() {
     return {
       priorityTasks: [
-        // Initialize with some initial priority tasks if needed
+        // Initialize with some initial priority
       ],
       completedTasks: [
-        // Initialize with some initial completed tasks if needed
+        // Initialize with some initial completed
       ]
     };
   },
