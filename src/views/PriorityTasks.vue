@@ -1,13 +1,12 @@
 <template>
   <div class="priority-tasks">
-    <div v-for="task in priorityTasks" :key="task.name" class="task-item">
+    <div v-for="task in priorityTasks" :key="task.name" class="task-item">  
       <div class="task-details">
         <div class="task-header">
           <div class="task-name">{{ task.name }}</div>
           <div class="task-deadline"><b>{{ task.deadline }}</b></div>
         </div>
-        <button @click="toggleDetails(task)" class="view-detail-button">{{ task.showDetails ? 'Hide Detail' :
-      'ViewDetail' }}</button>
+        <button @click="toggleDetails(task)" class="view-detail-button">{{ task.showDetails ? 'Hide Detail' : 'View Detail' }}</button>
         <div v-if="task.showDetails" class="task-info">
           <div v-if="!task.isEditing">
             <div class="task-description">{{ task.description }}</div>
@@ -21,8 +20,7 @@
             <div class="edit-fields">
               <input type="text" v-model="task.tempName" class="edit-input" placeholder="Title" required />
               <input type="date" v-model="task.tempDeadline" class="edit-input" placeholder="Deadline" required />
-              <textarea v-model="task.tempDescription" class="edit-textarea" placeholder="Task Description"
-                required></textarea>
+              <textarea v-model="task.tempDescription" class="edit-textarea" placeholder="Task Description" required></textarea>
             </div>
             <div class="task-actions">
               <button @click="updateTask(task)" class="update-button">Update</button>
@@ -34,8 +32,9 @@
     </div>
   </div>
 </template>
+
 <script>
-import Swal from 'sweetalert2'; // Import SweetAlert library
+import Swal from 'sweetalert2';
 
 export default {
   props: {
@@ -55,7 +54,7 @@ export default {
     },
     markAsDone(task) {
       console.log('Mark as done:', task);
-      this.$emit('mark-as-done', task);
+      this.$emit('mark-as-done', task); // Emitting 'mark-as-done' event with the task
     },
     deleteTask(task) {
       Swal.fire({
@@ -69,7 +68,7 @@ export default {
         cancelButtonText: 'Cancel'
       }).then((result) => {
         if (result.isConfirmed) {
-          
+          // User confirmed, delete the task
           const index = this.priorityTasks.indexOf(task);
           if (index !== -1) {
             // eslint-disable-next-line vue/no-mutating-props
@@ -138,7 +137,7 @@ export default {
 
 .view-detail-button {
   padding: 6px 12px;
-  margin-top: 8px;
+  margin-top: 12px;
   border-radius: 8px;
   cursor: pointer;
   background-color: #007bff;
@@ -211,6 +210,7 @@ export default {
   background-color: #218838;
 }
 
+/* New styles for edit fields */
 .edit-fields {
   margin-bottom: 20px;
 }

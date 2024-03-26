@@ -3,8 +3,7 @@
     <h1 style="color: green;">TASK MANAGEMENT</h1>
     <hr style="border-color: green;">
     <div class="input-container">
-      <button class="add-button" @click="showTaskForm = true" style="background-color: green; color: white;">Add New
-        Task</button>
+      <button class="add-button" @click="showTaskForm = true" style="background-color: green; color: white;">Add New Task</button>
     </div>
     <div v-if="showTaskForm" class="task-form" style="border-color: green;">
       <h2 style="color: green;">Add New Task</h2>
@@ -82,14 +81,24 @@ export default {
       this.showTaskForm = false;
     },
     moveTask(task) {
-      // Remove task from pendingTasks
+      // Check if the task is in priorityTasks
+      const priorityIndex = this.priorityTasks.findIndex(t => t === task);
+      if (priorityIndex !== -1) {
+        this.priorityTasks.splice(priorityIndex, 1);
+      }
+
+      // Check if the task is in pendingTasks
       const pendingIndex = this.pendingTasks.findIndex(t => t === task);
       if (pendingIndex !== -1) {
         this.pendingTasks.splice(pendingIndex, 1);
       }
 
-      // Add task to completedTasks
-      this.completedTasks.push(task);
+      // Check if the task is already in completedTasks to prevent duplication
+      const existsInCompleted = this.completedTasks.some(t => t === task);
+      if (!existsInCompleted) {
+        // Add task to completedTasks
+        this.completedTasks.push(task);
+      }
     }
   }
 };
