@@ -60,7 +60,7 @@ export default {
         description: this.taskDescription,
         deadline: this.deadline
       };
-      //iterating depending on the the choices pick by the user
+      //iterating, depending on the the choices pick by the user
       switch (this.remarks) {
         case 'priority':
           this.priorityTasks.push(newTask);
