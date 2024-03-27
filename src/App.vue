@@ -3,7 +3,8 @@
     <h1 style="color: green;">TASK MANAGEMENT</h1>
     <hr style="border-color: green;">
     <div class="input-container">
-      <button class="add-button" @click="showTaskForm = true" style="background-color: green; color: white;">Add New Task</button>
+      <button class="add-button" @click="showTaskForm = true" style="background-color: green; color: white;">Add New
+        Task</button>
     </div>
     <div v-if="showTaskForm" class="task-form" style="border-color: green;">
       <h2 style="color: green;">Add New Task</h2>
@@ -27,7 +28,8 @@
       <router-link to="/pending" class="router-link">Pending Tasks ({{ pendingTasks.length }})</router-link> |
       <router-link to="/completed" class="router-link">Completed Tasks ({{ completedTasks.length }})</router-link>
     </nav>
-    <router-view :priorityTasks="priorityTasks" :pendingTasks="pendingTasks" :completedTasks="completedTasks" @task-added="handleTaskAdded" @mark-as-done="moveTask"></router-view>
+    <router-view :priorityTasks="priorityTasks" :pendingTasks="pendingTasks" :completedTasks="completedTasks"
+      @task-added="handleTaskAdded" @mark-as-done="moveTask"></router-view>
   </div>
 </template>
 
@@ -47,6 +49,7 @@ export default {
   },
   methods: {
     addTask() {
+      //checking if there are any inputs
       if (!this.taskName || !this.taskDescription || !this.deadline) {
         alert('Please fill in all fields before adding the task.');
         return;
@@ -57,7 +60,7 @@ export default {
         description: this.taskDescription,
         deadline: this.deadline
       };
-
+      //iterating depending on the the choices pick by the user
       switch (this.remarks) {
         case 'priority':
           this.priorityTasks.push(newTask);
