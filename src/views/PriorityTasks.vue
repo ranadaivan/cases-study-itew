@@ -34,6 +34,7 @@
 </template>
 
 <script>
+//import of modal alert 
 import Swal from 'sweetalert2';
 
 export default {

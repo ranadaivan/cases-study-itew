@@ -83,7 +83,7 @@ export default {
           );
         }
       });
-    },//
+    },
     toggleDetails(task) {
       task.showDetails = !task.showDetails;
     },
